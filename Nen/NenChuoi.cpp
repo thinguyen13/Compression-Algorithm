@@ -38,3 +38,51 @@ void XuatBangTanSuat(NODE Huff[])
 	}
 }
 
+bool Tim2PhanTuMin(int &i, int &j, int nNode, NODE Huff[])
+{
+	i = -1;
+	j = -1;
+
+	for (int k = 0; k < nNode; k++)
+		if (Huff[k].used == false && Huff[k].freq > 0)
+		{
+			if (i == -1)
+			{
+				i = k;
+			}
+			else if (j == -1)
+			{
+				j = k;
+			}
+			else
+			{
+				if (Huff[i].freq > Huff[j].freq)
+				{
+					if (Huff[k].freq < Huff[i].freq || (Huff[k].freq == Huff[i].freq && Huff[k].c < Huff[i].c))
+					{
+						i = k;
+					}
+				}
+				else {
+					if (Huff[k].freq < Huff[j].freq || (Huff[k].freq == Huff[j].freq && Huff[k].c < Huff[j].c))
+					{
+						j = k;
+					}
+				}
+			}
+		}
+
+	if (i != -1 && j != -1)
+	{
+		if ((Huff[i].freq > Huff[j].freq) || ((Huff[i].freq == Huff[j].freq) && (Huff[i].c < Huff[j].c)))
+		{
+			swap(i, j);
+		}
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+

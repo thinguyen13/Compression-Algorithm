@@ -14,4 +14,5 @@ struct NODE
 void Tao(NODE Huff[]);
 void TanSuatXuatHien(const char* tenFile, NODE Huff[]);
 void XuatBangTanSuat(NODE Huff[]);
+bool Tim2PhanTuMin(int &i, int &j, int nNode, NODE Huff[]);
 #endif
