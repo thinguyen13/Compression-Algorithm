@@ -1,4 +1,4 @@
-#include "NenChuoi.h"
+﻿#include "NenChuoi.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -86,3 +86,34 @@ bool Tim2PhanTuMin(int &i, int &j, int nNode, NODE Huff[])
 	}
 }
 
+int TaoCayHuffman(NODE Huff[])
+{
+	int nNode = 256;
+	int i, j;
+	bool timThay = false;
+	while (true)
+	{
+
+		// Ghi chú: bước này để làm gì
+		timThay = Tim2PhanTuMin(i, j, nNode, Huff);
+		if (!timThay)
+		{
+			break;
+		}
+
+		// Ghi chú: bước này để làm gì
+		Huff[nNode].c = (Huff[i].c < Huff[j].c) ? Huff[i].c : Huff[j].c;
+		Huff[nNode].freq = Huff[i].freq + Huff[j].freq;
+		Huff[nNode].left = i;
+		Huff[nNode].right = j;
+
+		// Ghi chú: bước này để làm gì
+		Huff[i].used = true;
+		Huff[j].used = true;
+
+		// Ghi chú: bước này để làm gì
+		Huff[nNode].used = false;
+		nNode++;
+	}
+	return nNode - 1; // Ghi chú: ý nghĩa của giá trị trả về?
+}
