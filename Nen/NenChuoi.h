@@ -16,4 +16,5 @@ void TanSuatXuatHien(const char* tenFile, NODE Huff[]);
 void XuatBangTanSuat(NODE Huff[]);
 bool Tim2PhanTuMin(int &i, int &j, int nNode, NODE Huff[]);
 int TaoCayHuffman(NODE Huff[]);
+void XuatCayHuffman(int node, int tab, NODE Huff[]);
 #endif

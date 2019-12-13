@@ -94,26 +94,44 @@ int TaoCayHuffman(NODE Huff[])
 	while (true)
 	{
 
-		// Ghi chú: bước này để làm gì
 		timThay = Tim2PhanTuMin(i, j, nNode, Huff);
 		if (!timThay)
 		{
 			break;
 		}
 
-		// Ghi chú: bước này để làm gì
 		Huff[nNode].c = (Huff[i].c < Huff[j].c) ? Huff[i].c : Huff[j].c;
 		Huff[nNode].freq = Huff[i].freq + Huff[j].freq;
 		Huff[nNode].left = i;
 		Huff[nNode].right = j;
 
-		// Ghi chú: bước này để làm gì
 		Huff[i].used = true;
 		Huff[j].used = true;
 
-		// Ghi chú: bước này để làm gì
 		Huff[nNode].used = false;
 		nNode++;
 	}
-	return nNode - 1; // Ghi chú: ý nghĩa của giá trị trả về?
+	return nNode - 1;
+}
+
+void XuatCayHuffman(int node, int tab, NODE Huff[])
+{
+	if (node == -1)
+	{
+		return;
+	}
+	for (int i = 0; i < tab; i++)
+	{
+		cout << endl;
+	}
+	if (Huff[node].left == -1 && Huff[node].right == -1)
+	{
+		cout << Huff[node].c << "\n";
+	}
+	else
+	{
+		cout << Huff[node].c << "..\n";
+		XuatCayHuffman(Huff[node].left, tab + 1, Huff);
+		XuatCayHuffman(Huff[node].right, tab + 1, Huff);
+	}
 }
