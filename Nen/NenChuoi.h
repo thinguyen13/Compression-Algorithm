@@ -11,10 +11,18 @@ struct NODE
 	int left; // Chỉ số của nút con trái
 	int right; // Chỉ số nút con phải
 };
+
+struct MABIT {
+	char*	bits;
+	int		soBit;
+};
+
 void Tao(NODE Huff[]);
 void TanSuatXuatHien(const char* tenFile, NODE Huff[]);
 void XuatBangTanSuat(NODE Huff[]);
 bool Tim2PhanTuMin(int &i, int &j, int nNode, NODE Huff[]);
 int TaoCayHuffman(NODE Huff[]);
 void XuatCayHuffman(int node, int tab, NODE Huff[]);
+void DuyetCayHuffman(int node, char maBit[], int nMaBit, NODE Huff[], MABIT bangMaBit[]);
+void PhatSinhMaBit(int nRoot, MABIT bangMaBit[], NODE Huff[]);
 #endif

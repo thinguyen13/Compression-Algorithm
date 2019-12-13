@@ -135,3 +135,43 @@ void XuatCayHuffman(int node, int tab, NODE Huff[])
 		XuatCayHuffman(Huff[node].right, tab + 1, Huff);
 	}
 }
+
+void DuyetCayHuffman(int node, char maBit[], int nMaBit, NODE Huff[], MABIT bangMaBit[])
+{
+	if (node == -1)
+	{
+		return;
+	}
+	if (Huff[node].left == -1 && Huff[node].right == -1) {	//Ghi chú: ý nghĩa của điều kiện kiểm tra là gì?	
+		bangMaBit[node].soBit = nMaBit;
+		bangMaBit[node].bits = new char[nMaBit];
+		for (int i = 0; i < nMaBit; i++)
+		{
+			bangMaBit[node].bits[i] = maBit[i];
+		}
+		return;
+	}
+	else
+	{
+		//Ghi chú: ý nghĩa của 2 dòng lệnh bên dưới là gì?
+		maBit[nMaBit] = '0';
+		DuyetCayHuffman(Huff[node].left, maBit, nMaBit + 1, Huff, bangMaBit);
+
+		//Ghi chú: ý nghĩa của 2 dòng lệnh bên dưới là gì?
+		maBit[nMaBit] = '1';
+		DuyetCayHuffman(Huff[node].right, maBit, nMaBit + 1, Huff, bangMaBit);
+
+
+	}
+}
+
+void PhatSinhMaBit(int nRoot, MABIT bangMaBit[], NODE Huff[]) { // Ghi chú: ý nghĩa của tham số nRoot?
+	for (int i = 0; i < 256; i++) {
+		bangMaBit[i].soBit = 0;
+		bangMaBit[i].bits = NULL;
+	};
+	char maBit[10000 / 8];
+	int nMaBit = 0;
+
+	DuyetCayHuffman(nRoot, maBit, nMaBit, Huff, bangMaBit);
+}
