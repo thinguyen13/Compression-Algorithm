@@ -27,4 +27,5 @@ void DuyetCayHuffman(int node, char maBit[], int nMaBit, NODE Huff[], MABIT bang
 void PhatSinhMaBit(int nRoot, MABIT bangMaBit[], NODE Huff[]);
 void XuatBangMaBit(MABIT bangMaBit[], NODE Huff[]);
 void NenHuffman(const char *tenFile, NODE Huff[], MABIT bangMaBit[]);
+char strToChar(const char* str);
 #endif

@@ -237,3 +237,15 @@ void NenHuffman(const char *tenFile, NODE Huff[], MABIT bangMaBit[])
 	fileInput.close();
 	fileOutput.close();
 }
+
+
+char strToChar(const char* str)
+{
+	char parsed = 0;
+	for (int i = 0; i < 8; i++) {
+		if (str[i] == '1') {
+			parsed |= 1 << (7 - i);
+		}
+	}
+	return parsed;
+}
