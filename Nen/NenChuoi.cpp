@@ -175,3 +175,65 @@ void PhatSinhMaBit(int nRoot, MABIT bangMaBit[], NODE Huff[]) { // Ghi chú: ý 
 
 	DuyetCayHuffman(nRoot, maBit, nMaBit, Huff, bangMaBit);
 }
+
+void XuatBangMaBit(MABIT bangMaBit[], NODE Huff[]) {
+	ofstream fileOut("Note.txt");
+
+	for (int i = 0; i < 256; i++)
+		if (bangMaBit[i].soBit > 0) {
+			fileOut << Huff[i].c << ": ";
+			for (int j = 0; j < bangMaBit[i].soBit; j++)
+				fileOut << bangMaBit[i].bits[j];
+			fileOut << endl;
+		}
+
+	fileOut.close();
+}
+
+void NenHuffman(const char *tenFile, NODE Huff[], MABIT bangMaBit[])
+{
+	// BUOC 1: thong ke tan suat xuat hien cua cac ki tu
+	Tao(Huff);
+
+	TanSuatXuatHien(tenFile, Huff);
+
+	XuatBangTanSuat(Huff);
+
+	// BUOC 2: tao cay Huffman
+
+	int nRoot = TaoCayHuffman(Huff);
+
+	XuatCayHuffman(nRoot, 0, Huff);
+
+
+	// BUOC 3: phat sinh ma bit
+
+	PhatSinhMaBit(nRoot, bangMaBit, Huff);
+
+	//XuatMa(nRoot, Huff, bangMaBit);
+	XuatBangMaBit(bangMaBit, Huff);
+
+
+	ifstream fileInput(tenFile);
+	if (fileInput.fail())
+		cout << "Khong the mo file\n";
+
+	ofstream fileOutput("Output.txt");
+
+	while (!fileInput.eof())
+	{
+		unsigned char c;
+		if (fileInput >> c)
+		{
+			for (int i = 0; i < bangMaBit[c].soBit; i++)
+			{
+				fileOutput << bangMaBit[c].bits[i];
+			}
+		}
+
+	}
+
+
+	fileInput.close();
+	fileOutput.close();
+}

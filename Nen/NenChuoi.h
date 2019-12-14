@@ -25,4 +25,6 @@ int TaoCayHuffman(NODE Huff[]);
 void XuatCayHuffman(int node, int tab, NODE Huff[]);
 void DuyetCayHuffman(int node, char maBit[], int nMaBit, NODE Huff[], MABIT bangMaBit[]);
 void PhatSinhMaBit(int nRoot, MABIT bangMaBit[], NODE Huff[]);
+void XuatBangMaBit(MABIT bangMaBit[], NODE Huff[]);
+void NenHuffman(const char *tenFile, NODE Huff[], MABIT bangMaBit[]);
 #endif
